@@ -50,25 +50,25 @@
 
                 <form>
                     <div class="group">      
-                        <input type="text" required>
+                        <input v-model="credentials.username" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Username</label>
                     </div>
                     <div class="group">      
-                        <input type="password" required>
+                        <input v-model="credentials.password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     <label class="lightgray">Password</label>
                     </div>
                 </form>
-                <div v-on:click="showRegister" class="button_full_text white">Register</div>
-                <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div><br>
-
                 <div id="connection_buttons" class="">
-                    <div onclick="app.login()" class="button_line_green white button_full_text">CONNECT</div><br>
-                    <div onclick="app.to_homepage()" class="button_full_text lightgray">CANCEL</div>
+                    <div v-on:click="login" class="button_line_green white button_full_text">CONNECT</div><br>
                 </div>
+                <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div>
+                <div v-on:click="showRegister" class="button_full_text white">Register</div><br>
+
+                
             </div>
             <div v-if="hideRegistration === false" class="login">
                 <div class="title">
@@ -77,26 +77,26 @@
 
                 <form>
                     <div class="group">      
-                        <input type="text" required>
+                        <input v-model="registrationCredentials.username" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Username</label>
                     </div>
                     <div class="group">      
-                        <input type="email" required>
+                        <input v-model="registrationCredentials.email" type="email" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     <label class="lightgray">Email Address</label>
                     </div>
                     <div class="group">      
-                        <input type="password" required>
+                        <input v-model="registrationCredentials.password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Password</label>
                     </div>
 
                     <div class="group">      
-                        <input type="password" required>
+                        <input v-model="registrationCredentials.password_confirmation" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Confirmation</label>
@@ -105,7 +105,7 @@
 
                 <div id="connection_buttons">
                     </br>
-                    <div onclick="app.to_homepage()" class="button_full_text button_full_green">REGISTER</div>
+                    <div v-on:click="register" class="button_full_text button_full_green">REGISTER</div>
                     <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div>
                     </br>
                     

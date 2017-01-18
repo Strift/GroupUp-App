@@ -50,8 +50,14 @@ var app = {
             data: {
                 hideRegistration: true,
                 credentials: {
-                    username: 'Tangiers',
-                    password: 'k4t1ndu92'
+                    username: '',
+                    password: ''
+                },
+                registrationCredentials: {
+                    username: '',
+                    email: '',
+                    password: '',
+                    password_confirmation: ''
                 }
             },
 
@@ -70,13 +76,24 @@ var app = {
                 login: function() {
                     this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
                         // Success
-                        console.log(response.json());
+                        window.location = "homepage.html";
                     }, function(response) {
                         // Failure
-                        console.log(response.body.data.username);
+                        console.log(response.body);
                         if (response.status == 422) {
                             console.log("Le code d'erreur est 422");
                         }
+                    });
+                },
+
+                register: function() {
+                    this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
+                        // Success
+                        
+                        this.hideRegistration = true;
+                    }, function(response) {
+                        // Failure
+                        console.log(response.body);
                     });
                 }
             }
