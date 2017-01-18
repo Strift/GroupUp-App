@@ -28,7 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js 'unsafe-eval'">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js 'unsafe-eval'; connect-src 'self' https://laurentcazanove.com;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -40,9 +40,11 @@
             <h1>Random word</h1>
             <button id="btn-get-random-word" @click="getRandomWord">Get random word</button>
             <p>{{ randomWord }}</p>
+            <button @click="login">Login</button>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

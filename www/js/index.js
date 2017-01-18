@@ -49,11 +49,10 @@ var app = {
             // Variables
             data: {
                 randomWord: '',
-                words: [
-                    'lol',
-                    'mdr',
-                    'xd'
-                ]
+                credentials: {
+                    username: 'Tangiers',
+                    password: 'k4t1ndu92'
+                }
             },
 
             // Methods
@@ -61,6 +60,19 @@ var app = {
                 getRandomWord: function() {
                     var randomIndex = Math.floor(Math.random() * this.words.length);
                     this.randomWord = this.words[randomIndex];
+                },
+
+                login: function() {
+                    this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
+                        // Success
+                        console.log(response.json());
+                    }, function(response) {
+                        // Failure
+                        console.log(response.body.data.username);
+                        if (response.status == 422) {
+                            console.log("Le code d'erreur est 422");
+                        }
+                    });
                 }
             }
         });
