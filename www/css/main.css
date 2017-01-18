@@ -1,0 +1,303 @@
+.login{
+    position:absolute;
+    width:80%;
+    left:10%;
+    top:30%;
+    text-align:-webkit-center;
+}
+
+.logotype_small{
+    background-image:url(../img/logo.png);
+    background-repeat:no-repeat;
+    width:309px;
+    height:50px;
+    margin-bottom:10px;
+}
+
+.add_friend_block{
+    width:85%;
+    height:56px;
+    font-size:16px;
+    font-weight:500;
+    padding-top:5%;
+    padding-left:10%;
+    padding-right:5%;
+    padding-bottom:5%;
+}
+
+.add_friend_icon{
+    background-image:url(../img/icon_add_friend.png);
+    width:56px;
+    height:56px;
+    display:inline-block;
+    margin-right:10%;
+}
+
+span.add_friend_text{
+    display:inline-block;
+    height:56px;
+    vertical-align:middle;
+}
+
+
+span.favorite_block_title{
+    font-weight:600;
+    padding-left:5%;
+}
+
+.favorite_block{
+    width:100%;
+    /* padding-right: 5%; */
+    /* padding-left: 5%; */
+}
+
+.player_informations{
+    display:inline-block;
+    margin-left:5%;
+}
+
+.player_name{
+    font-size:16px;
+}
+
+.player_nick{
+    font-size:14px;
+}
+
+.player_status{
+    display:inline-block;
+    height:15px;
+    vertical-align:middle;
+}
+
+.player_status_icon_playing{
+    background-image:url(../img/player_status_icon_playing.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-top:3%;
+}
+
+.player_status_icon_schedule{
+    background-image:url(../img/player_status_icon_schedule.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-top:3%;
+}
+
+
+
+.player_status_icon_noschedule{
+    background-image:url(../img/player_status_icon_noschedule.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+    display:inline-block;
+    width:13px;
+    height:13px;
+    margin-top:3%;
+}
+
+.player_block{
+    display:block;
+    margin-left:5%;
+    margin-top:3%;
+    margin-right:5%;
+}
+
+.player_photo{
+    display:inline-block;
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background: #5A5C61;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+.player_status_block{
+    display:inline-block;
+}
+
+.button_playnow{
+    /* Oval: */
+    background-image: radial-gradient(50% 78%, #00F5BF 30%, #00E68A 78%);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.80);
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    position:absolute;
+    z-index:1000;
+    bottom:10%;
+    right:10%;
+    display:block;
+}
+
+.icon_playnow{
+    background-image:url(../img/icon_playnow.png);
+    background-repeat:no-repeat;
+    width:22px;
+    height:38px;
+    margin-left:17px;
+    margin-top:7px;
+}
+
+
+.account_informations{
+    margin-left:5%;
+}
+
+.account_name{
+    font-size:16px;
+}
+
+.account_nick{
+    font-size:14px;
+}
+.account_block{
+    display:flex;
+    flex:wrap;
+    align-items:center;
+    width:100%;
+    height:40%;
+    padding:5%;
+
+}
+
+.account_photo{
+    margin-right:5%;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background: #5A5C61;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+
+/*
+
+            <div class="games_block">
+                <span class="games_title lightgray">Games</span>
+                <span class="games_add_icon"></span><br>
+                <span class="games_title_spacer"></span>
+
+                <div class="game_block">
+                    <span class="game_title white">Overwatch</span>
+                    <span class="game_icon"><span>
+                </div> */
+
+.games_block{
+    padding-left:5%;
+    padding-right:5%;
+
+}
+
+.games_title{
+    font-size:14px;
+}
+
+.games_title_spacer{
+    width:100%;
+    border-bottom: 1px solid #5A5C61;
+    display:inline-block;
+}
+
+.games_add_icon{
+    display:inline-block;
+    position:absolute;
+    background-image:url(../img/icon_add_game.png);
+    background-size:contain;
+    width:13px;
+    height:13px;
+    right:10%;
+}
+
+.game_block{
+    margin-top:5%;
+    margin-bottom:5%;
+
+}
+
+.game_title{
+    font-size:14px;
+    font-weight:500;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 27px;
+  height: 11px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  background: #00E68A;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: -2px;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+
+  /* knob: */
+    background: #00E68A;
+/* Sketch doesnt export gradient borders at this point */
+/* Sketch doesnt export gradient borders at this point */
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.12), 0 3px 3px 0 rgba(0,0,0,0.24);
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.fade-enter-active, .fade-live-active{
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-live-to /* .fade-leave-active in <2.1.8 */
+{
+  opacity: 0;
+}
