@@ -41,41 +41,40 @@
     </head>
     <body>
         <div id="vue-instance" class="app">
-            <transition name="fade">
-                <div class="login">
-                    <div class="logotype_small"></div><br><br>
-                    <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
-                        <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
-                    </div><br>
+            <div v-if="registrationIsHidden" class="login">
+                <div class="logotype_small"></div><br><br>
+                <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
+                    <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
+                </div><br>
 
-                    <form id="id_login" class="none">
-                        <div class="group">      
-                            <input type="text" required>
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label class="lightgray">Username</label>
-                        </div>
-                        <div class="group">      
-                            <input type="password" required>
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                        <label class="lightgray">Password</label>
-                        </div>
-                    </form>
-                    <div onclick="app.to_register()" class="button_full_text white">Register</div>
-                    <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div><br>
-
-                    <div id="connection_buttons" class="">
-                        <div onclick="app.login()" class="button_line_green white button_full_text">CONNECT</div><br>
-                        <div onclick="app.to_homepage()" class="button_full_text lightgray">CANCEL</div>
+                <form>
+                    <div class="group">      
+                        <input type="text" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="lightgray">Username</label>
                     </div>
-                </div>
-            </transition>
-        <transition name="fade">
-            <div class="login">
-                <div class="title"><h1>Register</h1> </div></br></br>
+                    <div class="group">      
+                        <input type="password" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                    <label class="lightgray">Password</label>
+                    </div>
+                </form>
+                <div v-on:click="showRegister" class="button_full_text white">Register</div>
+                <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div><br>
 
-                <form id="id_login" class="none">
+                <div id="connection_buttons" class="">
+                    <div onclick="app.login()" class="button_line_green white button_full_text">CONNECT</div><br>
+                    <div onclick="app.to_homepage()" class="button_full_text lightgray">CANCEL</div>
+                </div>
+            </div>
+            <div v-else class="login">
+                <div class="title">
+                    <h1>Register</h1>
+                </div></br></br>
+
+                <form>
                     <div class="group">      
                         <input type="text" required>
                         <span class="highlight"></span>
@@ -92,25 +91,25 @@
                         <input type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Password</label>
+                        <label class="lightgray">Password</label>
                     </div>
 
                     <div class="group">      
                         <input type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Confirmation</label>
+                        <label class="lightgray">Confirmation</label>
                     </div>
                 </form>
 
-                <div id="connection_buttons" class="">
+                <div id="connection_buttons">
                     </br>
                     <div onclick="app.to_homepage()" class="button_full_text button_full_green">REGISTER</div>
+                    <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div>
                     </br>
-                    <div onclick="app.to_login()" class="button_full_text lightgray">CANCEL</div>
+                    
                 </div>
-        </transition>
-    
+            </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>

@@ -48,18 +48,30 @@ var app = {
 
             // Variables
             data: {
-                randomWord: '',
+                hideRegistration: true,
                 credentials: {
                     username: 'Tangiers',
                     password: 'k4t1ndu92'
                 }
             },
 
+            // Computed properties
+            computed: {
+                registrationIsHidden: function () {
+                  return this.hideRegistration;
+                }
+            },
+
             // Methods
             methods: {
-                getRandomWord: function() {
-                    var randomIndex = Math.floor(Math.random() * this.words.length);
-                    this.randomWord = this.words[randomIndex];
+                showRegister: function() {
+                    this.hideRegistration = false;
+                    console.log("show. hideRegistration=" + this.hideRegistration)
+                },
+
+                hideRegister: function() {
+                    this.hideRegistration = true;
+                    console.log("hide. hideRegistration=" + this.hideRegistration)
                 },
 
                 login: function() {
