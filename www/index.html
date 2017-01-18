@@ -41,6 +41,7 @@
     </head>
     <body>
         <div id="vue-instance" class="app">
+            <transition name="fade">
             <div v-if="hideRegistration === true" class="login">
                 <div class="logotype_small"></div><br><br>
                 <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
@@ -110,6 +111,7 @@
                     
                 </div>
             </div>
+        </transition>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
