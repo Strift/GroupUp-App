@@ -41,7 +41,7 @@
     </head>
     <body>
         <div id="vue-instance" class="app">
-            <div v-if="registrationIsHidden" class="login">
+            <div v-if="hideRegistration === true" class="login">
                 <div class="logotype_small"></div><br><br>
                 <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
                     <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
@@ -69,7 +69,7 @@
                     <div onclick="app.to_homepage()" class="button_full_text lightgray">CANCEL</div>
                 </div>
             </div>
-            <div v-else class="login">
+            <div v-if="hideRegistration === false" class="login">
                 <div class="title">
                     <h1>Register</h1>
                 </div></br></br>

@@ -55,13 +55,6 @@ var app = {
                 }
             },
 
-            // Computed properties
-            computed: {
-                registrationIsHidden: function () {
-                  return this.hideRegistration;
-                }
-            },
-
             // Methods
             methods: {
                 showRegister: function() {
