@@ -44,34 +44,54 @@ var app = {
     setupVue: function() {
         var vm = new Vue({
             // Tag associated with the vue component
-            el: "#vue-instance",
+            el: "#vue-index",
 
             // Variables
             data: {
-                randomWord: '',
+                hideRegistration: true,
                 credentials: {
-                    username: 'Tangiers',
-                    password: 'k4t1ndu92'
-                }
+                    username: '',
+                    password: ''
+                },
+                registrationCredentials: {
+                    username: '',
+                    email: '',
+                    password: '',
+                    password_confirmation: ''
+                },
+                loginError: {}, //error mesage for login
+                registrationError: {} //error message for registration
             },
 
             // Methods
             methods: {
-                getRandomWord: function() {
-                    var randomIndex = Math.floor(Math.random() * this.words.length);
-                    this.randomWord = this.words[randomIndex];
+                showRegister: function() {
+                    this.hideRegistration = false;
+                },
+
+                hideRegister: function() {
+                    this.hideRegistration = true;
                 },
 
                 login: function() {
                     this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
                         // Success
-                        console.log(response.json());
+                        this.loginError = {}; //raz login error message
+                        window.location = "homepage.html";
                     }, function(response) {
                         // Failure
-                        console.log(response.body.data.username);
-                        if (response.status == 422) {
-                            console.log("Le code d'erreur est 422");
-                        }
+                        this.loginError = response.body.data; //recuparation of JSON login error
+                    });
+                },
+
+                register: function() {
+                    this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
+                        // Success
+                        this.hideRegistration = true;
+                    }, function(response) {
+                        // Failure
+                        this.registrationError = response.body.data; //recuperation of JSON registration error
+                        console.log(response.body.data);
                     });
                 }
             }
