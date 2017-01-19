@@ -37,81 +37,83 @@
         <link rel="stylesheet" type="text/css" href="css/buttons.css">
         <link rel="stylesheet" type="text/css" href="css/appbar.css">
         <link rel="stylesheet" type="text/css" href="css/colors.css">
-        <title>Hello World</title>
+        <title>Login</title>
     </head>
     <body>
-        <div id="vue-instance" class="app">
-            <transition name="fade">
-                <div class="login">
-                    <div class="logotype_small"></div><br><br>
-                    <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
-                        <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
-                    </div><br>
+        <div id="vue-index" class="app">
+            <div v-if="hideRegistration === true" class="login">
+                <div class="logotype_small"></div><br><br>
+                <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
+                    <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
+                </div><br>
 
-                    <form id="id_login" class="none">
-                        <div class="group">      
-                            <input type="text" required>
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label class="lightgray">Username</label>
-                        </div>
-                        <div class="group">      
-                            <input type="password" required>
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                        <label class="lightgray">Password</label>
-                        </div>
-                    </form>
-                    <div onclick="app.to_register()" class="button_full_text white">Register</div>
-                    <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div><br>
-
-                    <div id="connection_buttons" class="">
-                        <div onclick="app.login()" class="button_line_green white button_full_text">CONNECT</div><br>
-                        <div onclick="app.to_homepage()" class="button_full_text lightgray">CANCEL</div>
-                    </div>
-                </div>
-            </transition>
-        <transition name="fade">
-            <div class="login">
-                <div class="title"><h1>Register</h1> </div></br></br>
-
-                <form id="id_login" class="none">
+                <form>
                     <div class="group">      
-                        <input type="text" required>
+                        <input v-model="credentials.username" type="email" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="lightgray">Email</label>
+                    </div>
+                    <div class="group">      
+                        <input v-model="credentials.password" type="password" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="lightgray">Password</label>
+                    </div>
+                    <div class="group">
+                        <p>{{ loginError.username }}</p>
+                    </div>
+                </form>
+                <div id="connection_buttons" class="">
+                    <div v-on:click="login" class="button_line_green white button_full_text">CONNECT</div><br>
+                </div>
+                <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div>
+                <div v-on:click="showRegister" class="button_full_text white">Register</div><br>
+            </div>
+            <div v-if="hideRegistration === false" class="login">
+                <div class="title">
+                    <h1>Register</h1>
+                </div></br></br>
+
+                <form>
+                    <div class="group">      
+                        <input v-model="registrationCredentials.username" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Username</label>
+                        <p>{{ registrationError.username }}</p>
                     </div>
                     <div class="group">      
-                        <input type="email" required>
+                        <input v-model="registrationCredentials.email" type="email" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Email Address</label>
+                        <label class="lightgray">Email Address</label>
+                        <p>{{ registrationError.email }}</p>
                     </div>
                     <div class="group">      
-                        <input type="password" required>
+                        <input v-model="registrationCredentials.password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Password</label>
+                        <label class="lightgray">Password</label>
+                        <p>{{ registrationError.password }}</p>
                     </div>
 
                     <div class="group">      
-                        <input type="password" required>
+                        <input v-model="registrationCredentials.password_confirmation" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Confirmation</label>
+                        <label class="lightgray">Confirmation</label>
+                        <p>{{ registrationError.password_confirmation }}</p>
                     </div>
                 </form>
 
-                <div id="connection_buttons" class="">
-                    </br>
-                    <div onclick="app.to_homepage()" class="button_full_text button_full_green">REGISTER</div>
-                    </br>
-                    <div onclick="app.to_login()" class="button_full_text lightgray">CANCEL</div>
+                <div id="connection_buttons"></br>
+                    <div v-on:click="register" class="button_full_text button_full_green">REGISTER</div>
+                    <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div></br>
                 </div>
-        </transition>
-    
+            </div>
         </div>
+        
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>

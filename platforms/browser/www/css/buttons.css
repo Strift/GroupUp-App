@@ -1,0 +1,32 @@
+.button_full_green{
+    background: #00E68A;
+    border-radius: 6px;
+    height:30px;
+    margin-top:5%;
+}
+
+.button_full_facebook{
+  background: #158EFC;
+  border-radius:6px;
+  height:40px;
+  display:block;
+}
+
+.button_full_shadow{
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
+}
+
+.button_full_text{
+    padding-top:12px;
+    font-weight:500;
+}
+
+.button_line_green{
+    border: 1px solid #00E68A;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0);
+    width:100%;
+    height:20px;
+    padding-bottom:10px;
+}
+
