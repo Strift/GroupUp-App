@@ -42,74 +42,64 @@
     <body>
         <div id="vue-index" class="app">
             <div v-if="hideRegistration === true" class="login">
-                <div class="logotype_small"></div><br><br>
-                <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
-                    <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
-                </div><br>
+                <div class="logotype_small"></div>
 
+                
                 <form>
                     <div class="group">      
-                        <input v-model="credentials.username" type="email" required>
+                        <input v-model="credentials.username" placeholder="Username" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Email</label>
                     </div>
                     <div class="group">      
-                        <input v-model="credentials.password" type="password" required>
+                        <input v-model="credentials.password" placeholder="Password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Password</label>
                     </div>
-                    <div class="group">
-                        <p>{{ loginError.username }}</p>
-                    </div>
+                    <div class="red">{{ loginError.username }}</div>
                 </form>
-                <div id="connection_buttons" class="">
-                    <div v-on:click="login" class="button_line_green white button_full_text">CONNECT</div><br>
-                </div>
                 <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div>
-                <div v-on:click="showRegister" class="button_full_text white">Register</div><br>
+                <div id="connection_buttons" class="">
+                    <div v-on:click="login" class="button_line_medium_green white button_full_text uppercase">connect</div>
+                    <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_medium_facebook button_full_shadow white button_full_text uppercase">connect with facebook</div>
+                    <div v-on:click="showRegister" class="button_line_medium_lightgray button_full_text white uppercase">register</div>
+                </div>               
             </div>
+
             <div v-if="hideRegistration === false" class="login">
                 <div class="title">
                     <h1>Register</h1>
-                </div></br></br>
-
+                </div>
                 <form>
                     <div class="group">      
-                        <input v-model="registrationCredentials.username" type="text" required>
+                        <input v-model="registrationCredentials.username" placeholder="Username" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Username</label>
-                        <p>{{ registrationError.username }}</p>
                     </div>
+                    <div v-for="error in registrationError.username" class="error red">{{ error }}</div>
                     <div class="group">      
-                        <input v-model="registrationCredentials.email" type="email" required>
+                        <input v-model="registrationCredentials.email" placeholder="Email Address" type="email" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Email Address</label>
-                        <p>{{ registrationError.email }}</p>
                     </div>
+                    <div v-for="error in registrationError.email" class="error red">{{ error }}</div>
                     <div class="group">      
-                        <input v-model="registrationCredentials.password" type="password" required>
+                        <input v-model="registrationCredentials.password" placeholder="Password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Password</label>
-                        <p>{{ registrationError.password }}</p>
                     </div>
-
+                    <div v-for="error in registrationError.password" class="error red">{{ error }}</div>
                     <div class="group">      
-                        <input v-model="registrationCredentials.password_confirmation" type="password" required>
+                        <input v-model="registrationCredentials.password_confirmation" placeholder="Confirmation" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Confirmation</label>
-                        <p>{{ registrationError.password_confirmation }}</p>
                     </div>
+                    <div class="error red">{{ registrationError.password_confirmation }}</div>
                 </form>
 
-                <div id="connection_buttons"></br>
-                    <div v-on:click="register" class="button_full_text button_full_green">REGISTER</div>
-                    <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div></br>
+                <div id="connection_buttons">
+                    <div v-on:click="register" class="button_full_text button_full_medium_green uppercase">register</div>
+                    <div v-on:click="hideRegister" class="button_full_text lightgray uppercase">cancel</div>
                 </div>
             </div>
         </div>

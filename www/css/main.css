@@ -1,17 +1,23 @@
+.error{
+  text-align:left;
+}
+
+
 .login{
     position:absolute;
     width:80%;
     left:10%;
-    top:30%;
+    top:15%;
     text-align:-webkit-center;
 }
 
 .logotype_small{
     background-image:url(../img/logo.png);
     background-repeat:no-repeat;
-    width:309px;
+    background-size:contain;
+    margin-bottom:15%;
+    max-width:95%;
     height:50px;
-    margin-bottom:10px;
 }
 
 .add_friend_block{
@@ -176,17 +182,6 @@ span.favorite_block_title{
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
 }
 
-/*
-
-            <div class="games_block">
-                <span class="games_title lightgray">Games</span>
-                <span class="games_add_icon"></span><br>
-                <span class="games_title_spacer"></span>
-
-                <div class="game_block">
-                    <span class="game_title white">Overwatch</span>
-                    <span class="game_icon"><span>
-                </div> */
 
 .games_block{
     padding-left:5%;
