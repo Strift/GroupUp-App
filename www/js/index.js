@@ -44,7 +44,7 @@ var app = {
     setupVue: function() {
         var vm = new Vue({
             // Tag associated with the vue component
-            el: "#vue-instance",
+            el: "#vue-index",
 
             // Variables
             data: {
@@ -58,42 +58,40 @@ var app = {
                     email: '',
                     password: '',
                     password_confirmation: ''
-                }
+                },
+                loginError: {}, //error mesage for login
+                registrationError: {} //error message for registration
             },
 
             // Methods
             methods: {
                 showRegister: function() {
                     this.hideRegistration = false;
-                    console.log("show. hideRegistration=" + this.hideRegistration)
                 },
 
                 hideRegister: function() {
                     this.hideRegistration = true;
-                    console.log("hide. hideRegistration=" + this.hideRegistration)
                 },
 
                 login: function() {
                     this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
                         // Success
+                        this.loginError = {}; //raz login error message
                         window.location = "homepage.html";
                     }, function(response) {
                         // Failure
-                        console.log(response.body);
-                        if (response.status == 422) {
-                            console.log("Le code d'erreur est 422");
-                        }
+                        this.loginError = response.body.data; //recuparation of JSON login error
                     });
                 },
 
                 register: function() {
                     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
                         // Success
-                        
                         this.hideRegistration = true;
                     }, function(response) {
                         // Failure
-                        console.log(response.body);
+                        this.registrationError = response.body.data; //recuperation of JSON registration error
+                        console.log(response.body.data);
                     });
                 }
             }
