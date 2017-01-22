@@ -21,29 +21,24 @@
 }
 
 .add_friend_block{
-    width:85%;
-    height:56px;
-    font-size:16px;
-    font-weight:500;
-    padding-top:5%;
-    padding-left:10%;
-    padding-right:5%;
-    padding-bottom:5%;
+    width: 100%;
+    margin-top:5%;
+    margin-bottom:5%;
+    margin-left:10%;
+    margin-right:5%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items:center;
+    align-content:center;
 }
 
 .add_friend_icon{
     background-image:url(../img/icon_add_friend.png);
     background-size:contain;
-    width:25px;
-    height:25px;
-    display:inline-block;
-    margin-right:10%;
-}
-
-span.add_friend_text{
-    display:inline-block;
-    height:56px;
-    vertical-align:middle;
+    width:30px;
+    height:30px;
+    margin-left:10%;
 }
 
 
@@ -54,8 +49,7 @@ span.favorite_block_title{
 
 .favorite_block{
     width:100%;
-    /* padding-right: 5%; */
-    /* padding-left: 5%; */
+  margin-bottom:5%
 }
 
 .player_informations{
