@@ -46,15 +46,15 @@
 
                 
                 <form>
-                    <div class="group">      
-                        <input v-model="credentials.username" placeholder="Username" type="text" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                    <div class="group_full">      
+                        <input class="input_full"v-model="credentials.username" placeholder="Username" type="text" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
-                    <div class="group">      
-                        <input v-model="credentials.password" placeholder="Password" type="password" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="credentials.password" placeholder="Password" type="password" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
                     <div class="red">{{ loginError.username }}</div>
                 </form>
@@ -71,28 +71,28 @@
                     <h1>Register</h1>
                 </div>
                 <form>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.username" placeholder="Username" type="text" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.username" placeholder="Username" type="text" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
                     <div v-for="error in registrationError.username" class="error red">{{ error }}</div>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.email" placeholder="Email Address" type="email" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.email" placeholder="Email Address" type="email" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
                     <div v-for="error in registrationError.email" class="error red">{{ error }}</div>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.password" placeholder="Password" type="password" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.password" placeholder="Password" type="password" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
                     <div v-for="error in registrationError.password" class="error red">{{ error }}</div>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.password_confirmation" placeholder="Confirmation" type="password" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.password_confirmation" placeholder="Confirmation" type="password" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
                     <div class="error red">{{ registrationError.password_confirmation }}</div>
                 </form>

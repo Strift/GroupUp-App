@@ -85,11 +85,11 @@ a:link, a:visited, a:hover, a:active{
 /* basic stylings ------------------------------------------ */
 
 /* form starting stylings ------------------------------- */
-.group{ 
+.group_full{ 
   position:relative; 
   margin-bottom:5px; 
 }
-input{
+.input_full{
   font-size:12px;
   padding:10px 10px 10px 5px;
   display:block;
@@ -99,7 +99,7 @@ input{
   background-color: rgba(0,0,0,0);
   color:#FBFCFF;
 }
-input:focus{
+.input_full:focus{
     outline:none; 
 }
 
@@ -117,15 +117,20 @@ input:focus{
 }
 
 /* active state */
-input:focus ~ label, input:valid ~ label 		{
+.input_full:focus ~ input-placeholder, .input_full:valid ~ input-placeholder 		{
   top:-10px;
   font-size:10px;
   color:rgba(0,0,0,0);
 }
 
 /* BOTTOM BARS ================================= */
-.bar 	{ position:relative; display:block; width:100%; }
-.bar:before, .bar:after 	{
+.bar_full{
+  position:relative;
+  display:block;
+  width:100%;
+}
+
+.bar_full:before, .bar_full:after 	{
   content:'';
   height:2px; 
   width:0;
@@ -136,20 +141,20 @@ input:focus ~ label, input:valid ~ label 		{
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
 }
-.bar:before {
+.bar_full:before {
   left:50%;
 }
-.bar:after {
+.bar_full:after {
   right:50%; 
 }
 
 /* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
+.input_full:focus ~ .bar_full:before, .input_full:focus ~ .bar_full:after {
   width:50%;
 }
 
 /* HIGHLIGHTER ================================== */
-.highlight {
+.highlight_full {
   position:absolute;
   height:60%; 
   width:100px; 
@@ -160,7 +165,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 }
 
 /* active state */
-input:focus ~ .highlight {
+.input_full:focus ~ .highlight_full {
   -webkit-animation:inputHighlighter 0.3s ease;
   -moz-animation:inputHighlighter 0.3s ease;
   animation:inputHighlighter 0.3s ease;
