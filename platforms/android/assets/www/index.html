@@ -37,11 +37,10 @@
         <link rel="stylesheet" type="text/css" href="css/buttons.css">
         <link rel="stylesheet" type="text/css" href="css/appbar.css">
         <link rel="stylesheet" type="text/css" href="css/colors.css">
-        <title>Hello World</title>
+        <title>Login</title>
     </head>
     <body>
-        <div id="vue-instance" class="app">
-            <transition name="fade">
+        <div id="vue-index" class="app">
             <div v-if="hideRegistration === true" class="login">
                 <div class="logotype_small"></div><br><br>
                 <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
@@ -50,16 +49,19 @@
 
                 <form>
                     <div class="group">      
-                        <input v-model="credentials.username" type="text" required>
+                        <input v-model="credentials.username" type="email" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Username</label>
+                        <label class="lightgray">Email</label>
                     </div>
                     <div class="group">      
                         <input v-model="credentials.password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Password</label>
+                        <label class="lightgray">Password</label>
+                    </div>
+                    <div class="group">
+                        <p>{{ loginError.username }}</p>
                     </div>
                 </form>
                 <div id="connection_buttons" class="">
@@ -67,8 +69,6 @@
                 </div>
                 <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div>
                 <div v-on:click="showRegister" class="button_full_text white">Register</div><br>
-
-                
             </div>
             <div v-if="hideRegistration === false" class="login">
                 <div class="title">
@@ -81,18 +81,21 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Username</label>
+                        <p>{{ registrationError.username }}</p>
                     </div>
                     <div class="group">      
                         <input v-model="registrationCredentials.email" type="email" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    <label class="lightgray">Email Address</label>
+                        <label class="lightgray">Email Address</label>
+                        <p>{{ registrationError.email }}</p>
                     </div>
                     <div class="group">      
                         <input v-model="registrationCredentials.password" type="password" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Password</label>
+                        <p>{{ registrationError.password }}</p>
                     </div>
 
                     <div class="group">      
@@ -100,19 +103,17 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="lightgray">Confirmation</label>
+                        <p>{{ registrationError.password_confirmation }}</p>
                     </div>
                 </form>
 
-                <div id="connection_buttons">
-                    </br>
+                <div id="connection_buttons"></br>
                     <div v-on:click="register" class="button_full_text button_full_green">REGISTER</div>
-                    <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div>
-                    </br>
-                    
+                    <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div></br>
                 </div>
             </div>
-        </transition>
         </div>
+        
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
