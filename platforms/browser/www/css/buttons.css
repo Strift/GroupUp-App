@@ -1,14 +1,14 @@
-.button_full_green{
+.button_full_medium_green{
     background: #00E68A;
     border-radius: 6px;
     height:30px;
-    margin-top:5%;
+    margin-top:15%;
 }
 
-.button_full_facebook{
+.button_full_medium_facebook{
   background: #158EFC;
   border-radius:6px;
-  height:40px;
+  height:30px;
   display:block;
 }
 
@@ -21,12 +21,40 @@
     font-weight:500;
 }
 
-.button_line_green{
+.uppercase{
+    text-transform: uppercase;
+}
+
+.button_line_medium_green{
     border: 1px solid #00E68A;
     border-radius: 6px;
     background-color: rgba(0,0,0,0);
     width:100%;
-    height:20px;
-    padding-bottom:10px;
+    max-width:400px;
+    height:30px;
+    padding-top:15px;
+    margin-top:5%;
+    margin-bottom:5%;
 }
 
+.button_line_medium_lightgray{
+    border: 1px solid #5A5C61;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0);
+    width:100%;
+    height:30px;
+    padding-top:15px;
+    margin-top:15%;
+    margin-bottom:5%;
+}
+
+.button_line_small_lightgray{
+    border: 1px solid #5A5C61;
+    border-radius: 6px;
+    background-color: rgba(0,0,0,0);
+    width:100%;
+    height:15px;
+    padding-bottom:5%;
+    margin-top:5%;
+    margin-bottom:5%;
+}

@@ -25,7 +25,7 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener('deviceready', this.loginAuto, false);
+        document.addEventListener('deviceready', onDeviceReady false);
     },
 
     // deviceready Event Handler
@@ -33,8 +33,8 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        this.console.log("et voila");
-        this.receivedEvent('deviceready');
+        //var credentials = localStorage.CredentialsAutoLogin;
+        //this.loginAuto(credentials);
     },
 
     // Update DOM on a Received Event
@@ -43,8 +43,15 @@ var app = {
     },
 
     // Auto-Login
-    loginAuto: function() {
-        this.console.log("et bim");
+    loginAuto: function(credentials) {
+        //var credentials = localStorage.CredentialsAutoLogin;
+        this.$http.post('https://laurentcazanove.com/api/login', credentials).then(function(response) {
+            // Success
+            window.location = "homepage.html";
+        }, function(response) {
+            // Failure
+            this.loginError = response.body.data; //recuparation of JSON login error
+        });
     },
 
     // Vue.js
@@ -74,25 +81,20 @@ var app = {
             methods: {
                 showRegister: function() {
                     this.hideRegistration = false;
-                    alert('Status hideRegistration '+ this.hideRegistration);
                 },
 
                 hideRegister: function() {
-                    alert('Back to login');
                     this.hideRegistration = true;
-                    alert('Status hideRegistration '+ this.hideRegistration);
                 },
 
                 login: function() {
-                    alert('Button is working');
                     this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
                         // Success
-                        alert('Request is working');
-                        //this.loginError = {}; //raz login error message
-                        //window.location = "homepage.html";
+                        this.loginError = {}; //raz login error message
+                        localStorage.setItem("CredentialsAutoLogin", this.credentials);
+                        window.location = "homepage.html";
                     }, function(response) {
                         // Failure
-                        alert('Request is not working');
                         this.loginError = response.body.data; //recuparation of JSON login error
                     });
                 },

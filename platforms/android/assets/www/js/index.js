@@ -17,39 +17,42 @@
  * under the License.
  */
 var app = {
+    vue: null,
 
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+        //this.bindEvents();
         this.setupVue();
+        this.bindEvents();
     },
 
     bindEvents: function() {
-        document.addEventListener('deviceready', this.loginAuto, false);
+        var vue = this.vue;
+        document.addEventListener("deviceready", function() {
+            if(localStorage.getItem("usernameAutoLogin") != null) {
+                vue.login({
+                    username: localStorage.getItem("usernameAutoLogin"),
+                    password: localStorage.getItem("passwordAutoLogin")
+                });
+            } else {
+                console.log("going to login page");
+            }
+        },true);
     },
 
     // deviceready Event Handler
     //
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.console.log("et voila");
-        this.receivedEvent('deviceready');
-    },
-
+    
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
     },
 
-    // Auto-Login
-    loginAuto: function() {
-        this.console.log("et bim");
-    },
-
     // Vue.js
     setupVue: function() {
-        var vm = new Vue({
+        this.vue = new Vue({
             // Tag associated with the vue component
             el: "#vue-index",
 
@@ -80,35 +83,31 @@ var app = {
                     this.hideRegistration = true;
                 },
 
-                login: function() {
-                    this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
+                login: function(credentials) {
+                    this.$http.post('https://laurentcazanove.com/api/login', credentials).then(function(response) {
                         // Success
                         this.loginError = {}; //raz login error message
+                        localStorage.setItem("usernameAutoLogin", credentials.username);
+                        localStorage.setItem("passwordAutoLogin", credentials.password);
                         window.location = "homepage.html";
                     }, function(response) {
                         // Failure
-                        alert('Request is not working');
                         this.loginError = response.body.data; //recuparation of JSON login error
                     });
                 },
 
-                testFunc: function() {
-                    console.log("Jai cassé le game");
-                },
-
-                register: function() {
-                    this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
+                register: function(credentials) {
+                    this.$http.post('https://laurentcazanove.com/api/register', credentials).then(function(response) {
                         // Success
                         this.hideRegistration = true;
                     }, function(response) {
                         // Failure
                         this.registrationError = response.body.data; //recuperation of JSON registration error
-                        console.log(response.body.data);
                     });
                 }
             }
         });
-    }
+    },
 };
 
 app.initialize();
