@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -24,7 +25,7 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.loginAuto, false);
     },
 
     // deviceready Event Handler
@@ -32,6 +33,7 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
+        this.console.log("et voila");
         this.receivedEvent('deviceready');
     },
 
@@ -40,11 +42,16 @@ var app = {
         console.log('Received Event: ' + id);
     },
 
+    // Auto-Login
+    loginAuto: function() {
+        this.console.log("et bim");
+    },
+
     // Vue.js
     setupVue: function() {
         var vm = new Vue({
             // Tag associated with the vue component
-            el: "#vue-instance",
+            el: "#vue-index",
 
             // Variables
             data: {
@@ -58,42 +65,50 @@ var app = {
                     email: '',
                     password: '',
                     password_confirmation: ''
-                }
+                },
+                loginError: {}, //error mesage for login
+                registrationError: {} //error message for registration
             },
 
             // Methods
             methods: {
                 showRegister: function() {
                     this.hideRegistration = false;
-                    console.log("show. hideRegistration=" + this.hideRegistration)
+                    alert('Status hideRegistration '+ this.hideRegistration);
                 },
 
                 hideRegister: function() {
+                    alert('Back to login');
                     this.hideRegistration = true;
-                    console.log("hide. hideRegistration=" + this.hideRegistration)
+                    alert('Status hideRegistration '+ this.hideRegistration);
                 },
 
                 login: function() {
+                    alert('Button is working');
                     this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
                         // Success
-                        window.location = "homepage.html";
+                        alert('Request is working');
+                        //this.loginError = {}; //raz login error message
+                        //window.location = "homepage.html";
                     }, function(response) {
                         // Failure
-                        console.log(response.body);
-                        if (response.status == 422) {
-                            console.log("Le code d'erreur est 422");
-                        }
+                        alert('Request is not working');
+                        this.loginError = response.body.data; //recuparation of JSON login error
                     });
+                },
+
+                testFunc: function() {
+                    console.log("Jai cassé le game");
                 },
 
                 register: function() {
                     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
                         // Success
-                        
                         this.hideRegistration = true;
                     }, function(response) {
                         // Failure
-                        console.log(response.body);
+                        this.registrationError = response.body.data; //recuperation of JSON registration error
+                        console.log(response.body.data);
                     });
                 }
             }

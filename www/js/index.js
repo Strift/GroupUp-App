@@ -17,6 +17,7 @@
  * under the License.
  */
 var app = {
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -24,7 +25,7 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.loginAuto, false);
     },
 
     // deviceready Event Handler
@@ -32,12 +33,18 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
+        this.console.log("et voila");
         this.receivedEvent('deviceready');
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
+    },
+
+    // Auto-Login
+    loginAuto: function() {
+        this.console.log("et bim");
     },
 
     // Vue.js
@@ -80,8 +87,13 @@ var app = {
                         window.location = "homepage.html";
                     }, function(response) {
                         // Failure
+                        alert('Request is not working');
                         this.loginError = response.body.data; //recuparation of JSON login error
                     });
+                },
+
+                testFunc: function() {
+                    console.log("Jai cassé le game");
                 },
 
                 register: function() {

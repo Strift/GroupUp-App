@@ -291,13 +291,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-
-.fade-enter-active, .fade-live-active{
-  transition: opacity .5s;
-}
-
-.fade-enter, .fade-live-to /* .fade-leave-active in <2.1.8 */
-{
-  opacity: 0;
-}
