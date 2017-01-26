@@ -74,19 +74,25 @@ var app = {
             methods: {
                 showRegister: function() {
                     this.hideRegistration = false;
+                    alert('Status hideRegistration '+ this.hideRegistration);
                 },
 
                 hideRegister: function() {
+                    alert('Back to login');
                     this.hideRegistration = true;
+                    alert('Status hideRegistration '+ this.hideRegistration);
                 },
 
                 login: function() {
+                    alert('Button is working');
                     this.$http.post('https://laurentcazanove.com/api/login', this.credentials).then(function(response) {
                         // Success
-                        this.loginError = {}; //raz login error message
-                        window.location = "homepage.html";
+                        alert('Request is working');
+                        //this.loginError = {}; //raz login error message
+                        //window.location = "homepage.html";
                     }, function(response) {
                         // Failure
+                        alert('Request is not working');
                         this.loginError = response.body.data; //recuparation of JSON login error
                     });
                 },

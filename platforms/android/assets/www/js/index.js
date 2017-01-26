@@ -87,6 +87,7 @@ var app = {
                         window.location = "homepage.html";
                     }, function(response) {
                         // Failure
+                        alert('Request is not working');
                         this.loginError = response.body.data; //recuparation of JSON login error
                     });
                 },

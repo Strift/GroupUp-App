@@ -49,10 +49,10 @@
 
                 <form>
                     <div class="group">      
-                        <input v-model="credentials.username" type="email" required>
+                        <input v-model="credentials.username" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label class="lightgray">Email</label>
+                        <label class="lightgray">Username or Email</label>
                     </div>
                     <div class="group">      
                         <input v-model="credentials.password" type="password" required>
@@ -115,8 +115,8 @@
         </div>
         
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript" src="js/vue-resource.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

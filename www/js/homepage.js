@@ -69,6 +69,7 @@ var app = {
             // Methods
             methods: {
                 addFriendFromUsername: function() {
+                    alert('Goodbye');
                     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
                         // Success
                         
