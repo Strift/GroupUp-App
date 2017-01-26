@@ -1,33 +1,8 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
+
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js 'unsafe-eval'; connect-src 'self' https://laurentcazanove.com;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -37,79 +12,70 @@
         <link rel="stylesheet" type="text/css" href="css/buttons.css">
         <link rel="stylesheet" type="text/css" href="css/appbar.css">
         <link rel="stylesheet" type="text/css" href="css/colors.css">
+        <link rel="stylesheet" type="text/css" href="css/form.css">
         <title>Login</title>
     </head>
     <body>
         <div id="vue-index" class="app">
             <div v-if="hideRegistration === true" class="login">
-                <div class="logotype_small"></div><br><br>
-                <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_facebook button_full_shadow">
-                    <div class="button_full_text white">CONNECT WITH FACEBOOK</div><br>
-                </div><br>
+                <div class="logotype_small"></div>
 
+                
                 <form>
-                    <div class="group">      
-                        <input v-model="credentials.username" type="text" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label class="lightgray">Username or Email</label>
+                    <div class="group_full">      
+                        <input class="input_full"v-model="credentials.username" placeholder="Username" type="text" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
-                    <div class="group">      
-                        <input v-model="credentials.password" type="password" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label class="lightgray">Password</label>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="credentials.password" placeholder="Password" type="password" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
-                    <div class="group">
-                        <p>{{ loginError.username }}</p>
-                    </div>
+                    <div class="red">{{ loginError.username }}</div>
                 </form>
-                <div id="connection_buttons" class="">
-                    <div v-on:click="login" class="button_line_green white button_full_text">CONNECT</div><br>
-                </div>
                 <div onclick="app.reset()" class="button_full_text lightgray">Reset Password</div>
-                <div v-on:click="showRegister" class="button_full_text white">Register</div><br>
+                <div id="connection_buttons" class="">
+                    <div v-on:click="login" class="button_line_medium_green white button_full_text uppercase">connect</div>
+                    <div onclick="app.login_facebook()" id="facebook_connection" class="button_full_medium_facebook button_full_shadow white button_full_text uppercase">connect with facebook</div>
+                    <div v-on:click="showRegister" class="button_line_medium_lightgray button_full_text white uppercase">register</div>
+                </div>               
             </div>
+
             <div v-if="hideRegistration === false" class="login">
                 <div class="title">
                     <h1>Register</h1>
-                </div></br></br>
-
+                </div>
                 <form>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.username" type="text" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label class="lightgray">Username</label>
-                        <p>{{ registrationError.username }}</p>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.username" placeholder="Username" type="text" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.email" type="email" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label class="lightgray">Email Address</label>
-                        <p>{{ registrationError.email }}</p>
+                    <div v-for="error in registrationError.username" class="error red">{{ error }}</div>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.email" placeholder="Email Address" type="email" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
-                    <div class="group">      
-                        <input v-model="registrationCredentials.password" type="password" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label class="lightgray">Password</label>
-                        <p>{{ registrationError.password }}</p>
+                    <div v-for="error in registrationError.email" class="error red">{{ error }}</div>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.password" placeholder="Password" type="password" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
-
-                    <div class="group">      
-                        <input v-model="registrationCredentials.password_confirmation" type="password" required>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label class="lightgray">Confirmation</label>
-                        <p>{{ registrationError.password_confirmation }}</p>
+                    <div v-for="error in registrationError.password" class="error red">{{ error }}</div>
+                    <div class="group_full">      
+                        <input class="input_full" v-model="registrationCredentials.password_confirmation" placeholder="Confirmation" type="password" required>
+                        <span class="highlight_full"></span>
+                        <span class="bar_full"></span>
                     </div>
+                    <div class="error red">{{ registrationError.password_confirmation }}</div>
                 </form>
 
-                <div id="connection_buttons"></br>
-                    <div v-on:click="register" class="button_full_text button_full_green">REGISTER</div>
-                    <div v-on:click="hideRegister" class="button_full_text lightgray">CANCEL</div></br>
+                <div id="connection_buttons">
+                    <div v-on:click="register" class="button_full_text button_full_medium_green uppercase">register</div>
+                    <div v-on:click="hideRegister" class="button_full_text lightgray uppercase">cancel</div>
                 </div>
             </div>
         </div>
