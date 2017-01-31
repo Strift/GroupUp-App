@@ -1,17 +1,15 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-splashscreen.SplashScreen",
         "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-        "pluginId": "cordova-plugin-splashscreen",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
         "clobbers": [
             "navigator.splashscreen"
         ]
     },
     {
-        "id": "cordova-plugin-statusbar.statusbar",
         "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "pluginId": "cordova-plugin-statusbar",
+        "id": "cordova-plugin-statusbar.statusbar",
         "clobbers": [
             "window.StatusBar"
         ]

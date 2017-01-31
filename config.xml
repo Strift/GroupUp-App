@@ -20,17 +20,21 @@
     <preference name="BackgroundColor" value="272727"/>
     <preference name="StatusBarBackgroundColor" value=""/>
     <preference name="Orientation" value="portrait"/>
-    <preference name="SplashScreen" value="splash" />
-    <preference name="SplashScreenDelay" value="4000"/>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="5000"/>
     
     <platform name="android">
         <allow-intent href="market:*" />
         
-        <!-- Portrait -->
         <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi" />
         <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi" />
         <splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi" />
         <splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi" />
+
+        <icon src="res/screen/android/ldpi.png" density="ldpi" />
+        <icon src="res/screen/android/mdpi.png" density="mdpi" />
+        <icon src="res/screen/android/hdpi.png" density="hdpi" />
+        <icon src="res/screen/android/xhdpi.png" density="xhdpi" />
     </platform>
     
     <platform name="ios">
@@ -53,5 +57,5 @@
         <splash src="res/screen/ios/Default@3x~universal~comany.png" />
     </platform>
     
-    <engine name="android" spec="~6.0.0" />
+    <engine name="android" spec="~5.1.0" />
 </widget>
