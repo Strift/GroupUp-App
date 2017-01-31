@@ -21,7 +21,6 @@ var app = {
 
     // Application Constructor
     initialize: function() {
-        //this.bindEvents();
         this.setupVue();
         this.bindEvents();
     },
