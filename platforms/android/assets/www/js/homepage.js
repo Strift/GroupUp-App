@@ -48,6 +48,7 @@ var app = {
 
             // Variables
             data: {
+                menu : false,
                 friends: [
                     {
                         username: 'Laurent',
@@ -60,7 +61,11 @@ var app = {
                     {
                         username: 'Baboulino',
                         favorite: false
-                    }
+                    },
+                    {
+                        username: 'Paul',
+                        favorite: false
+                    },
                 ],
                 friendList: {},
                 userToken: ''
@@ -68,6 +73,12 @@ var app = {
 
             // Methods
             methods: {
+                showMenu:function(){
+                    this.menu = true;
+                },
+                hideMenu:function(){
+                    this.menu = false;
+                },
                 addFriendFromUsername: function() {
                     alert('Goodbye');
                     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
@@ -77,6 +88,12 @@ var app = {
                         // Failure
                         
                     });
+                },
+
+                disconnet: function() {
+                    localStorage.removeItem("usernameAutoLogin");
+                    localStorage.removeItem("passwordAutoLogin");
+                    window.location = "index.html";
                 }
             }
         });
