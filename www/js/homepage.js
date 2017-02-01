@@ -48,6 +48,7 @@ var app = {
 
             // Variables
             data: {
+                menu : false,
                 friends: [
                     {
                         username: 'Laurent',
@@ -68,6 +69,12 @@ var app = {
 
             // Methods
             methods: {
+                showMenu:function(){
+                    this.menu = true;
+                },
+                hideMenu:function(){
+                    this.menu = false;
+                },
                 addFriendFromUsername: function() {
                     alert('Goodbye');
                     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {

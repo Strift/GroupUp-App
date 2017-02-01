@@ -13,16 +13,30 @@
     <link rel="stylesheet" type="text/css" href="css/appbar.css" />
     <link rel="stylesheet" type="text/css" href="css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>Homepage</title>
 </head>
 
 <body>
     <div id="vue-homepage" class="app">
+            <transition v-if="menu === true" name="slide-menu">
+               <div class="menu" v-on:click="hideMenu">
+                    <div class="side-menu">
+                        <span class="menu-back-icon" v-on:click="hideMenu"></span>
+                        <span class="menu-title">Menu</span>
+                        <ul class="menu-items-list">
+                            <li class="menu-item">Homepage</li>
+                            <li class="menu-item">About</li>
+                            <li class="menu-item lightgray">Disconnect</li>
+                        </ul>
+                    </div>
+               </div>
+           </transition>
         <div class="homepage">
             <div class="appbar_large">
-                <div onclick="app.to_login()"class="icon_burger"></div><div class="appbar_title">Homepage</div><div onclick="app.to_account()"class="icon_account"></div>
+                <div v-on:click="showMenu" class="icon_burger"></div><div class="appbar_title">Homepage</div><div onclick="app.to_account()"class="icon_account"></div>
                 <div class="inline_buttons">
                     <div class="button button_selected green">Contacts</div>
                     <div class="button lightgray">Overview</div>
