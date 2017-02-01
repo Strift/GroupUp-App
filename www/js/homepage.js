@@ -60,6 +60,22 @@ var app = {
                     {
                         username: 'Baboulino',
                         favorite: false
+                    },
+                    {
+                        username: 'Baboulino',
+                        favorite: false
+                    },
+                    {
+                        username: 'Baboulino',
+                        favorite: false
+                    },
+                    {
+                        username: 'Baboulino',
+                        favorite: false
+                    },
+                    {
+                        username: 'Baboulino',
+                        favorite: false
                     }
                 ],
                 friendList: {},
