@@ -61,7 +61,11 @@ var app = {
                     {
                         username: 'Baboulino',
                         favorite: false
-                    }
+                    },
+                    {
+                        username: 'Paul',
+                        favorite: false
+                    },
                 ],
                 friendList: {},
                 userToken: ''
@@ -84,6 +88,12 @@ var app = {
                         // Failure
                         
                     });
+                },
+
+                disconnet: function() {
+                    localStorage.removeItem("usernameAutoLogin");
+                    localStorage.removeItem("passwordAutoLogin");
+                    window.location = "index.html";
                 }
             }
         });

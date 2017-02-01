@@ -24,6 +24,7 @@
 
 .group_mid{
   position:relative;
+  z-index:0;
   margin-bottom:5px;
 }
 .input_mid{
