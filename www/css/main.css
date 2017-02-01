@@ -130,7 +130,7 @@ span.favorite_block_title{
     width:54px;
     height:54px;
     border-radius:50%;
-    position:absolute;
+    position:fixed;
     z-index:1000;
     bottom:10%;
     right:10%;
