@@ -12,8 +12,10 @@
     background: #1C1C1C;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
     width:100%;
-    vertical-align:middle;
     line-height:normal; 
+    position:fixed;
+    z-index:1000;
+    top:0%;
 }
 
 
@@ -21,6 +23,10 @@
     font-size:14px;
     display:inline-block;
     font-weight:400;
+    position:fixed;
+    width:100%;
+    text-align: center;
+    margin-top:5%
 }
 
 .icon_burger{
@@ -41,12 +47,9 @@
     border-radius:50%;
     background: #272727;
     display:inline-block;
-    position:absolute;
+    position:inherit;
     right:10%;
-    top:2%;
-    margin-left:5%;
-    
-    
+    top:5%;    
 }
 
 .inline_buttons{
