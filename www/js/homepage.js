@@ -61,11 +61,7 @@ var app = {
                     {
                         username: 'Baboulino',
                         favorite: false
-                    },
-                    {
-                        username: 'Paul',
-                        favorite: false
-                    },
+                    }
                 ],
                 friendList: {},
                 userToken: ''
