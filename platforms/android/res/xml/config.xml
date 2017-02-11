@@ -39,8 +39,10 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="BackgroundColor" value="272727" />
-    <preference name="StatusBarBackgroundColor" value="" />
+    <preference name="BackgroundColor" value="#272727" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#1C1C1C" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="Orientation" value="portrait" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3500" />

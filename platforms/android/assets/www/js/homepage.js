@@ -106,7 +106,12 @@ var app = {
                         console.log("failed");
                     });
                 },
-
+                toAccount:function(){
+                    window.location = "account.html";
+                },
+                toAbout:function(){
+                    window.location = "about.html";
+                },
                 disconnet: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");

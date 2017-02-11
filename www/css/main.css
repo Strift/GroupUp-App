@@ -1,3 +1,39 @@
+.icon_nofavorite{
+  background-image:url(../img/icon_nofavorite.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  width:20px;
+  height:20px;
+  display:block;
+  position:absolute;
+  right:20%;
+}
+
+.icon_favorite{
+  background-image:url(../img/icon_favorite.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  width:20px;
+  height:20px;
+  display:block;
+  position:absolute;
+  right:20%;
+
+}
+
+.icon_delete_friend{
+  background-image:url(../img/icon_delete_friend.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  width:20px;
+  height:20px;
+  opacity:0.3;
+  display:block;
+  position:absolute;
+  right:7%;
+}
+
+
 .error{
   text-align:left;
 }
@@ -53,8 +89,8 @@ span.favorite_block_title{
 }
 
 .player_informations{
-    display:inline-block;
-    margin-left:5%;
+  display:inline-block;
+  margin-left:5%;
 }
 
 .player_name{
@@ -69,6 +105,7 @@ span.favorite_block_title{
     display:inline-block;
     height:15px;
     vertical-align:middle;
+   
 }
 
 .player_status_icon_playing{
@@ -104,10 +141,11 @@ span.favorite_block_title{
 }
 
 .player_block{
-    display:block;
+    display:flex;
     margin-left:5%;
     margin-top:3%;
     margin-right:5%;
+    align-items: center;
 }
 
 .player_photo{
@@ -120,7 +158,7 @@ span.favorite_block_title{
 }
 
 .player_status_block{
-    display:inline-block;
+    /* display:inline-block; */
 }
 
 .button_playnow{
@@ -140,6 +178,7 @@ span.favorite_block_title{
 .icon_playnow{
     background-image:url(../img/icon_playnow.png);
     background-repeat:no-repeat;
+    background-size:contain;
     width:22px;
     height:38px;
     margin-left:17px;
@@ -149,6 +188,7 @@ span.favorite_block_title{
 
 .account_informations{
     margin-left:5%;
+    margin-bottom:5%;
 }
 
 .account_name{

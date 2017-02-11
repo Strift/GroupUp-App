@@ -28,7 +28,8 @@
                         <span class="menu-title">Menu</span>
                         <ul class="menu-items-list">
                             <li class="menu-item">Homepage</li>
-                            <li class="menu-item">About</li>
+                            <li v-on:click="toAccount" class="menu-item">Account</li>
+                            <li v-on:click="toAbout" class="menu-item">About</li>
                             <li class="menu-item lightgray" v-on:click="disconnet">Disconnect</li>
                         </ul>
                     </div>
