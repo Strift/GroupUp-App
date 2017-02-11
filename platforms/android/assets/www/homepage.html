@@ -53,7 +53,6 @@
                         <span class="bar_mid"></span>
                     </div>
                 </form>
-
                 <div class="add_friend_icon"></div>
             </div>
             <div class="favorite_block">
@@ -71,14 +70,12 @@
                 </div>
             </div>
             <span class="favorite_block_title lightgray">Friends</span>
-            <div v-for="friend in friends" class="player_block">
+            <div v-for="friend in friendList" class="player_block">
                 <div class="player_photo"></div>
                 <div class="player_informations">
                     <span class="player_name white">{{ friend.username }}</span><br>
-                    <span class="player_nick green">@PMartin</span><br>
                     <div class="player_status_block">
                         <span class="player_status_icon_playing"></span>
-                        <span class="player_status green">is currently playing Overwatch.</span>
                     </div>
                 </div>
             </div>

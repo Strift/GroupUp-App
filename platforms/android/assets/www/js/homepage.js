@@ -17,24 +17,30 @@
  * under the License.
  */
 var app = {
+    vue: null,
+
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
         this.setupVue();
+        this.bindEvents();
     },
 
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        var vue = this.vue;
+        document.addEventListener("deviceready", function() {
+            if(localStorage.getItem("userToken") != null) {
+                vue.getMyfriends();
+            } else {
+                console.log("failed to list friends");
+            }
+        },true);
     },
 
     // deviceready Event Handler
     //
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
-
+    
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
@@ -42,7 +48,7 @@ var app = {
 
     // Vue.js
     setupVue: function() {
-        var vm = new Vue({
+        this.vue = new Vue({
             // Tag associated with the vue component
             el: "#vue-homepage",
 
@@ -63,8 +69,12 @@ var app = {
                         favorite: false
                     }
                 ],
+                
                 friendList: {},
-                userToken: ''
+            },
+
+            mounted:function(){
+                this.getMyfriends() //method1 will execute at pageload
             },
 
             // Methods
@@ -72,17 +82,28 @@ var app = {
                 showMenu:function(){
                     this.menu = true;
                 },
+
                 hideMenu:function(){
                     this.menu = false;
                 },
-                addFriendFromUsername: function() {
-                    alert('Goodbye');
-                    this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
-                        // Success
+
+                // addFriendFromUsername: function() {
+                //     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
+                //         // Success
                         
+                //     }, function(response) {
+                //         // Failure
+                        
+                //     });
+                // },
+
+                getMyfriends: function() {
+                    this.$http.get('https://laurentcazanove.com/api/friends/'+localStorage.getItem("userId")+'?api_token='+localStorage.getItem("userToken")).then(function(response) {
+                        // Success
+                        this.friendList = response.body.data;
                     }, function(response) {
                         // Failure
-                        
+                        console.log("failed");
                     });
                 },
                 toAccount:function(){

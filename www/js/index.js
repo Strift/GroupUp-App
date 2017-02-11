@@ -86,8 +86,12 @@ var app = {
                     this.$http.post('https://laurentcazanove.com/api/login', credentials).then(function(response) {
                         // Success
                         this.loginError = {}; //raz login error message
+                        
                         localStorage.setItem("usernameAutoLogin", credentials.username);
                         localStorage.setItem("passwordAutoLogin", credentials.password);
+                        localStorage.setItem("userToken", response.body.data.api_token);
+                        localStorage.setItem("userId", response.body.data.id);
+                        
                         window.location = "homepage.html";
                     }, function(response) {
                         // Failure
