@@ -178,6 +178,7 @@ span.favorite_block_title{
 .icon_playnow{
     background-image:url(../img/icon_playnow.png);
     background-repeat:no-repeat;
+    background-size:contain;
     width:22px;
     height:38px;
     margin-left:17px;
