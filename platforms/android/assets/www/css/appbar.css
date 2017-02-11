@@ -12,15 +12,21 @@
     background: #1C1C1C;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
     width:100%;
-    vertical-align:middle;
     line-height:normal; 
+    position:fixed;
+    z-index:100;
+    top:0%;
 }
 
 
 .appbar_title{
     font-size:14px;
-    display:inline-block;
     font-weight:400;
+    position:absolute;
+    width:100%;
+    text-align: center;
+    top:17%;
+    z-index:-10;
 }
 
 .icon_burger{
@@ -28,25 +34,10 @@
     background-repeat:no-repeat;
     width:18px;
     height:12px;
-    display:inline-block;
     margin-left:5%;
     margin-right:5%;
     margin-top:5%;
-
-}
-
-.icon_account{
-    height:30px;
-    width:30px;
-    border-radius:50%;
-    background: #272727;
-    display:inline-block;
-    position:absolute;
-    right:10%;
-    top:2%;
-    margin-left:5%;
-    
-    
+    z-index:10;
 }
 
 .inline_buttons{

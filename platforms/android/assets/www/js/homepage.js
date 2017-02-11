@@ -61,11 +61,7 @@ var app = {
                     {
                         username: 'Baboulino',
                         favorite: false
-                    },
-                    {
-                        username: 'Paul',
-                        favorite: false
-                    },
+                    }
                 ],
                 friendList: {},
                 userToken: ''
@@ -89,7 +85,12 @@ var app = {
                         
                     });
                 },
-
+                toAccount:function(){
+                    window.location = "account.html";
+                },
+                toAbout:function(){
+                    window.location = "about.html";
+                },
                 disconnet: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");
