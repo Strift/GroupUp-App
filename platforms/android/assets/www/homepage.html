@@ -48,16 +48,17 @@
             <div class="add_friend_block lightgray">
                 <form>
                     <div class="group_mid">      
-                        <input class="input_mid" placeholder="Add a friend !" type="text" required>
+                        <input v-model="addUsername" class="input_mid" placeholder="Add a friend !" type="text" required>
                         <span class="highlight_mid"></span>
                         <span class="bar_mid"></span>
+                        <!-- <div class="error red">{{ error }}</div> -->
                     </div>
                 </form>
-                <div class="add_friend_icon"></div>
+                <div v-on:click="addFriendFromUsername()" class="add_friend_icon"></div>
             </div>
             <div class="favorite_block">
                 <span class="favorite_block_title lightgray">Favorites</span>
-                <div v-for="friend in friends" v-if="friend.favorite" class="player_block">
+                <div v-for="friend in friendList" v-if="friend.favorite" class="player_block">
                     <div class="player_photo"></div>
                     <div class="player_informations">
                         <span class="player_name white">{{ friend.username }}</span>
@@ -67,7 +68,11 @@
                         </div>
                     </div>
                     <span class="icon_favorite"></span>
+<<<<<<< Updated upstream
                     <span class="icon_delete_friend"></span>
+=======
+                    <span class="icon_delete_friend" v-on:click="deleteFriend(friend.username)"></span>
+>>>>>>> Stashed changes
                 </div>
             </div>
             <span class="favorite_block_title lightgray">Friends</span>
@@ -83,7 +88,11 @@
                     </div>
                 </div>
                 <span class="icon_nofavorite"></span>
+<<<<<<< Updated upstream
                 <span class="icon_delete_friend"></span>
+=======
+                <span class="icon_delete_friend" v-on:click="deleteFriend(friend.username)"></span>
+>>>>>>> Stashed changes
             </div>
             <div class="button_playnow">
                 <div class="icon_playnow"></div>

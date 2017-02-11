@@ -55,22 +55,9 @@ var app = {
             // Variables
             data: {
                 menu : false,
-                friends: [
-                    {
-                        username: 'Laurent',
-                        favorite: false
-                    },
-                    {
-                        username: 'Paul',
-                        favorite: true
-                    },
-                    {
-                        username: 'Baboulino',
-                        favorite: false
-                    }
-                ],
-                
+                addUsername: null,
                 friendList: {},
+                addError: {}, //error mesage for adding friend
             },
 
             mounted:function(){
@@ -79,6 +66,18 @@ var app = {
 
             // Methods
             methods: {
+<<<<<<< Updated upstream
+=======
+                deleteFriend:function(username){
+                  var url = 'https://laurentcazanove.com/api/friends/' + localStorage.getItem("userId") + '?username=' + username + '?api_token=' + localStorage.getItem("userToken"); 
+
+                  this.$http.delete(url).then(function(response){
+                       console.log("User "+userId+" a supprimé l'ami " + username);
+                  }, function(response){
+                       console.log("Error : delete friend");
+                  });
+            },
+>>>>>>> Stashed changes
                 getFriends:function(){
                     var userId = 15;
                     var url = 'https://laurentcazanove.com/api/friends/' + userId;
@@ -101,15 +100,16 @@ var app = {
                     this.menu = false;
                 },
 
-                // addFriendFromUsername: function() {
-                //     this.$http.post('https://laurentcazanove.com/api/register', this.registrationCredentials).then(function(response) {
-                //         // Success
-                        
-                //     }, function(response) {
-                //         // Failure
-                        
-                //     });
-                // },
+                addFriendFromUsername: function() {
+                    this.$http.post('https://laurentcazanove.com/api/friends/'+localStorage.getItem("userId")+'?username='+this.addUsername+'&api_token='+localStorage.getItem("userToken")).then(function(response) {
+                        // Success
+                        this.addError = {}; //raz login error message
+                        this.getMyfriends();
+                    }, function(response) {
+                        // Failure
+                        this.addError = response.body.data;
+                    });
+                },
 
                 getMyfriends: function() {
                     this.$http.get('https://laurentcazanove.com/api/friends/'+localStorage.getItem("userId")+'?api_token='+localStorage.getItem("userToken")).then(function(response) {
@@ -129,6 +129,8 @@ var app = {
                 disconnet: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");
+                    localStorage.removeItem("userId");
+                    localStorage.removeItem("userToken");
                     window.location = "index.html";
                 }
             }
