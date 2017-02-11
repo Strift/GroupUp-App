@@ -72,14 +72,16 @@ var app = {
             // Methods
             methods: {
                 deleteFriend:function(username){
-                    var userId = 15
-                  var url = 'https://laurentcazanove.com/api/friends/' + userId + '?username=' + username + '?api_token=VHCkHJUrFEPHiyr6CnHa2enY3gdHMxN9gwUKJrxoTvfwwku6Um1sdxDMyyQ2'; 
+                  var url = 'https://laurentcazanove.com/api/friends/' + localStorage.getItem("userId") + '?username=' + username + '?api_token=' + localStorage.getItem("userToken"); 
 
                   this.$http.delete(url).then(function(response){
                        console.log("User "+userId+" a supprimé l'ami " + username);
                   }, function(response){
                        console.log("Error : delete friend");
                   });
+
+                  l
+
             },
                 getFriends:function(){
                     var userId = 15;
