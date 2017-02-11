@@ -1,4 +1,4 @@
-- Ajout d'un ami
+DONE- Ajout d'un ami
 - Suppression d'un ami
 - Mettre en favori
 - Consulter un profil
