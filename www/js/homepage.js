@@ -55,21 +55,6 @@ var app = {
             // Variables
             data: {
                 menu : false,
-                friends: [
-                    {
-                        username: 'Laurent',
-                        favorite: false
-                    },
-                    {
-                        username: 'Paul',
-                        favorite: true
-                    },
-                    {
-                        username: 'Baboulino',
-                        favorite: false
-                    }
-                ],
-                
                 friendList: {},
             },
 
