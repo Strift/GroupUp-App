@@ -60,24 +60,30 @@
                 <div v-for="friend in friends" v-if="friend.favorite" class="player_block">
                     <div class="player_photo"></div>
                     <div class="player_informations">
-                        <span class="player_name white">{{ friend.username }}</span><br>
-                        <span class="player_nick green">@PMartin</span><br>
+                        <span class="player_name white">{{ friend.username }}</span>
                         <div class="player_status_block">
                             <span class="player_status_icon_playing"></span>
-                            <span class="player_status green">is currently playing Overwatch.</span>
+                            <span class="player_status green">is playing Overwatch.</span>
                         </div>
                     </div>
+                    <span class="icon_favorite"></span>
+                    <span class="icon_delete_friend"></span>
                 </div>
             </div>
             <span class="favorite_block_title lightgray">Friends</span>
             <div v-for="friend in friendList" class="player_block">
                 <div class="player_photo"></div>
                 <div class="player_informations">
-                    <span class="player_name white">{{ friend.username }}</span><br>
+
+                    <span class="player_name white">{{ friend.username }}</span></br>
                     <div class="player_status_block">
                         <span class="player_status_icon_playing"></span>
+                        <span class="player_status green">is playing Overwatch.</span>
+
                     </div>
                 </div>
+                <span class="icon_nofavorite"></span>
+                <span class="icon_delete_friend"></span>
             </div>
             <div class="button_playnow">
                 <div class="icon_playnow"></div>
