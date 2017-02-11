@@ -53,8 +53,8 @@ span.favorite_block_title{
 }
 
 .player_informations{
-    display:inline-block;
-    margin-left:5%;
+  display:inline-block;
+  margin-left:5%;
 }
 
 .player_name{
@@ -69,6 +69,7 @@ span.favorite_block_title{
     display:inline-block;
     height:15px;
     vertical-align:middle;
+   
 }
 
 .player_status_icon_playing{
@@ -104,10 +105,11 @@ span.favorite_block_title{
 }
 
 .player_block{
-    display:block;
+    display:flex;
     margin-left:5%;
     margin-top:3%;
     margin-right:5%;
+    align-items: center;
 }
 
 .player_photo{
@@ -120,7 +122,7 @@ span.favorite_block_title{
 }
 
 .player_status_block{
-    display:inline-block;
+    /* display:inline-block; */
 }
 
 .button_playnow{
@@ -149,6 +151,7 @@ span.favorite_block_title{
 
 .account_informations{
     margin-left:5%;
+    margin-bottom:5%;
 }
 
 .account_name{
