@@ -67,10 +67,11 @@ var app = {
                 deleteFriend:function(username){
                   var url = 'https://laurentcazanove.com/api/friends/' 
                   + localStorage.getItem("userId") 
-                  + '?username=' + username 
-                  + '?api_token=' + localStorage.getItem("userToken"); 
+                  + '?api_token=' + localStorage.getItem("userToken")
+                  + '&username=' + username ; 
 
                   this.$http.delete(url).then(function(response){
+                        this.getMyfriends();
                        console.log("User "+localStorage.getItem("userId")+" a supprimé l'ami " + username);
                   }, function(response){
                        console.log("Error : delete friend");
