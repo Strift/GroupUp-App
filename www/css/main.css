@@ -1,3 +1,39 @@
+.icon_nofavorite{
+  background-image:url(../img/icon_nofavorite.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  width:20px;
+  height:20px;
+  display:block;
+  position:absolute;
+  right:20%;
+}
+
+.icon_favorite{
+  background-image:url(../img/icon_favorite.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  width:20px;
+  height:20px;
+  display:block;
+  position:absolute;
+  right:20%;
+
+}
+
+.icon_delete_friend{
+  background-image:url(../img/icon_delete_friend.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  width:20px;
+  height:20px;
+  opacity:0.3;
+  display:block;
+  position:absolute;
+  right:7%;
+}
+
+
 .error{
   text-align:left;
 }
@@ -142,6 +178,7 @@ span.favorite_block_title{
 .icon_playnow{
     background-image:url(../img/icon_playnow.png);
     background-repeat:no-repeat;
+    background-size:contain;
     width:22px;
     height:38px;
     margin-left:17px;
