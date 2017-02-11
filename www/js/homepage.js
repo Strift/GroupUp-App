@@ -87,23 +87,6 @@ var app = {
                   }, function(response){
                        console.log("Error : delete friend");
                   });
-
-                  l
-
-            },
-                getFriends:function(){
-                    var userId = 15;
-                    var url = 'https://laurentcazanove.com/api/friends/' + userId;
-                    
-                    var param = { api_token: "VHCkHJUrFEPHiyr6CnHa2enY3gdHMxN9gwUKJrxoTvfwwku6Um1sdxDMyyQ2" };
-
-                    this.$http.get("https://laurentcazanove.com/api/friends/15?api_token=VHCkHJUrFEPHiyr6CnHa2enY3gdHMxN9gwUKJrxoTvfwwku6Um1sdxDMyyQ2").then(function(response){
-                        //Success
-                        console.log("Success");
-                        }, function(response){
-                        //Failure
-
-                            });
                 },
                 showMenu:function(){
                     this.menu = true;

@@ -57,7 +57,7 @@
             </div>
             <div class="favorite_block">
                 <span class="favorite_block_title lightgray">Favorites</span>
-                <div v-for="friend in friends" v-if="friend.favorite" class="player_block">
+                <div v-for="friend in friendList" v-if="friend.favorite" class="player_block">
                     <div class="player_photo"></div>
                     <div class="player_informations">
                         <span class="player_name white">{{ friend.username }}</span>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <span class="favorite_block_title lightgray">Friends</span>
-            <div v-for="friend in friendList" class="player_block">
+            <div v-for="friend in friendList" v-if="!friend.favorite" class="player_block">
                 <div class="player_photo"></div>
                 <div class="player_informations">
 
