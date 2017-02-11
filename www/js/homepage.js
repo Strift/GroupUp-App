@@ -55,21 +55,6 @@ var app = {
             // Variables
             data: {
                 menu : false,
-                friends: [
-                    {
-                        username: 'Laurent',
-                        favorite: false
-                    },
-                    {
-                        username: 'Paul',
-                        favorite: true
-                    },
-                    {
-                        username: 'Baboulino',
-                        favorite: false
-                    }
-                ],
-                
                 friendList: {},
             },
 
@@ -80,30 +65,17 @@ var app = {
             // Methods
             methods: {
                 deleteFriend:function(username){
-                  var url = 'https://laurentcazanove.com/api/friends/' + localStorage.getItem("userId") + '?username=' + username + '?api_token=' + localStorage.getItem("userToken"); 
+                  var url = 'https://laurentcazanove.com/api/friends/' 
+                  + localStorage.getItem("userId") 
+                  + '?api_token=' + localStorage.getItem("userToken")
+                  + '&username=' + username ; 
 
                   this.$http.delete(url).then(function(response){
-                       console.log("User "+userId+" a supprimé l'ami " + username);
+                        this.getMyfriends();
+                       console.log("User "+localStorage.getItem("userId")+" a supprimé l'ami " + username);
                   }, function(response){
                        console.log("Error : delete friend");
                   });
-
-                  l
-
-            },
-                getFriends:function(){
-                    var userId = 15;
-                    var url = 'https://laurentcazanove.com/api/friends/' + userId;
-                    
-                    var param = { api_token: "VHCkHJUrFEPHiyr6CnHa2enY3gdHMxN9gwUKJrxoTvfwwku6Um1sdxDMyyQ2" };
-
-                    this.$http.get("https://laurentcazanove.com/api/friends/15?api_token=VHCkHJUrFEPHiyr6CnHa2enY3gdHMxN9gwUKJrxoTvfwwku6Um1sdxDMyyQ2").then(function(response){
-                        //Success
-                        console.log("Success");
-                        }, function(response){
-                        //Failure
-
-                            });
                 },
                 showMenu:function(){
                     this.menu = true;
@@ -124,7 +96,9 @@ var app = {
                 // },
 
                 getMyfriends: function() {
-                    this.$http.get('https://laurentcazanove.com/api/friends/'+localStorage.getItem("userId")+'?api_token='+localStorage.getItem("userToken")).then(function(response) {
+                    this.$http.get('https://laurentcazanove.com/api/friends/'
+                        +localStorage.getItem("userId")
+                        +'?api_token='+localStorage.getItem("userToken")).then(function(response) {
                         // Success
                         this.friendList = response.body.data;
                     }, function(response) {
@@ -141,6 +115,8 @@ var app = {
                 disconnet: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");
+                    localStorage.removeItem("userId");
+                    localStorage.removeItem("userToken");
                     window.location = "index.html";
                 }
             }
