@@ -80,7 +80,10 @@ var app = {
             // Methods
             methods: {
                 deleteFriend:function(username){
-                  var url = 'https://laurentcazanove.com/api/friends/' + localStorage.getItem("userId") + '?username=' + username + '?api_token=' + localStorage.getItem("userToken"); 
+                  var url = 'https://laurentcazanove.com/api/friends/' 
+                  + localStorage.getItem("userId") 
+                  + '?username=' + username 
+                  + '?api_token=' + localStorage.getItem("userToken"); 
 
                   this.$http.delete(url).then(function(response){
                        console.log("User "+localStorage.getItem("userId")+" a supprimé l'ami " + username);
@@ -107,7 +110,9 @@ var app = {
                 // },
 
                 getMyfriends: function() {
-                    this.$http.get('https://laurentcazanove.com/api/friends/'+localStorage.getItem("userId")+'?api_token='+localStorage.getItem("userToken")).then(function(response) {
+                    this.$http.get('https://laurentcazanove.com/api/friends/'
+                        +localStorage.getItem("userId")
+                        +'?api_token='+localStorage.getItem("userToken")).then(function(response) {
                         // Success
                         this.friendList = response.body.data;
                     }, function(response) {
@@ -124,6 +129,8 @@ var app = {
                 disconnet: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");
+                    localStorage.removeItem("userId");
+                    localStorage.removeItem("userToken");
                     window.location = "index.html";
                 }
             }
