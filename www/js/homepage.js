@@ -21,6 +21,9 @@ var app = {
 
     // Application Constructor
     initialize: function() {
+        Vue.component('modal', {
+            template: '#modal-template'
+        });
         this.setupVue();
         this.bindEvents();
     },
@@ -57,7 +60,10 @@ var app = {
                 menu : false,
                 addUsername: null,
                 friendList: {},
+                showModalDelete: false,
+                userToDelete: null,
                 addError: null, //error mesage for adding friend
+
             },
 
             mounted:function(){
@@ -67,6 +73,7 @@ var app = {
             // Methods
             methods: {
                 deleteFriend:function(username){
+
                   var url = 'https://laurentcazanove.com/api/friends/' 
                   + localStorage.getItem("userId") 
                   + '?api_token=' + localStorage.getItem("userToken")
@@ -78,6 +85,19 @@ var app = {
                   }, function(response){
                        console.log("Error : delete friend");
                   });
+                },
+
+                enableDeleteModal: function(user){
+                    this.userToDelete = user;
+                    this.showModalDelete = true;
+                },
+
+                disableDeleteModal: function(confirmed){
+                    if(confirmed){
+                        this.deleteFriend(this.userToDelete.username);
+                    }
+
+                    this.showModalDelete = false;
                 },
                 
                 showMenu:function(){
@@ -95,6 +115,7 @@ var app = {
                         +localStorage.getItem("userToken")).then(function(response) {
                         // Success
                         this.addError = {}; //raz login error message
+                        this.addUsername = null;
                         this.getMyfriends();
                     }, function(response) {
                         // Failure
