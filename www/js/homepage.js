@@ -114,7 +114,7 @@ var app = {
                         +this.addUsername+'&api_token='
                         +localStorage.getItem("userToken")).then(function(response) {
                         // Success
-                        this.addError = {}; //raz login error message
+                        this.addError = null; //raz login error message
                         this.addUsername = null;
                         this.getMyfriends();
                     }, function(response) {
