@@ -73,12 +73,9 @@ var app = {
             // Methods
             methods: {
                 deleteFriend:function(username){
-
-                  var url = 'https://laurentcazanove.com/api/friends/' 
-                  + localStorage.getItem("userId") 
-                  + '?api_token=' + localStorage.getItem("userToken")
-                  + '&username=' + username ; 
-
+                  var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends/' 
+                      + '?api_token=' + localStorage.getItem("userToken")
+                      + '&username=' + username ; 
                   this.$http.delete(url).then(function(response){
                         this.getMyfriends();
                        //console.log("User "+localStorage.getItem("userId")+" a supprimé l'ami " + username);
@@ -109,10 +106,10 @@ var app = {
                 },
 
                 addFriendFromUsername: function() {
-                    this.$http.post('https://laurentcazanove.com/api/friends/'
-                        +localStorage.getItem("userId")+'?username='
-                        +this.addUsername+'&api_token='
-                        +localStorage.getItem("userToken")).then(function(response) {
+                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends/' 
+                        + '?username=' + this.addUsername 
+                        + '&api_token=' + localStorage.getItem("userToken");
+                    this.$http.post(url).then(function(response) {
                         // Success
                         this.addError = null; //raz login error message
                         this.addUsername = null;
@@ -124,9 +121,9 @@ var app = {
                 },
 
                 getMyfriends: function() {
-                    this.$http.get('https://laurentcazanove.com/api/friends/'
-                        +localStorage.getItem("userId")
-                        +'?api_token='+localStorage.getItem("userToken")).then(function(response) {
+                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends/' 
+                        + '?api_token=' + localStorage.getItem("userToken");
+                    this.$http.get(url).then(function(response) {
                         // Success
                         this.friendList = response.body.data;
                     }, function(response) {
