@@ -51,7 +51,7 @@
                         <input v-model="addUsername" class="input_mid" placeholder="Add a friend !" type="text" required>
                         <span class="highlight_mid"></span>
                         <span class="bar_mid"></span>
-                        <!-- <div class="error red">{{ error }}</div> -->
+                        <div class="error red">{{ addError }}</div>
                     </div>
                 </form>
                 <div v-on:click="addFriendFromUsername()" class="add_friend_icon"></div>

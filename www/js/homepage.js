@@ -57,7 +57,7 @@ var app = {
                 menu : false,
                 addUsername: null,
                 friendList: {},
-                addError: {}, //error mesage for adding friend
+                addError: null, //error mesage for adding friend
             },
 
             mounted:function(){
@@ -98,7 +98,7 @@ var app = {
                         this.getMyfriends();
                     }, function(response) {
                         // Failure
-                        this.addError = response.body.data;
+                        this.addError = response.body.data.username[0]
                     });
                 },
 
