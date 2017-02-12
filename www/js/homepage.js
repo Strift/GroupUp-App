@@ -73,7 +73,7 @@ var app = {
             // Methods
             methods: {
                 deleteFriend:function(username){
-                  var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends/' 
+                  var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends' 
                       + '?api_token=' + localStorage.getItem("userToken")
                       + '&username=' + username ; 
                   this.$http.delete(url).then(function(response){
@@ -106,7 +106,7 @@ var app = {
                 },
 
                 addFriendFromUsername: function() {
-                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends/' 
+                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends' 
                         + '?username=' + this.addUsername 
                         + '&api_token=' + localStorage.getItem("userToken");
                     this.$http.post(url).then(function(response) {
@@ -121,7 +121,7 @@ var app = {
                 },
 
                 getMyfriends: function() {
-                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends/' 
+                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends' 
                         + '?api_token=' + localStorage.getItem("userToken");
                     this.$http.get(url).then(function(response) {
                         // Success
