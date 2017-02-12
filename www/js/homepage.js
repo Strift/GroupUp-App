@@ -61,8 +61,9 @@ var app = {
                 addUsername: null,
                 friendList: {},
                 showModalDelete: false,
-                addError: {}, //error mesage for adding friend
-                userToDelete: null
+                userToDelete: null,
+                addError: null, //error mesage for adding friend
+
             },
 
             mounted:function(){
@@ -118,7 +119,7 @@ var app = {
                         this.getMyfriends();
                     }, function(response) {
                         // Failure
-                        this.addError = response.body.data;
+                        this.addError = response.body.data.username[0]
                     });
                 },
 
