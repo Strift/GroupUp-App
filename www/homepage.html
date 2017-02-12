@@ -98,7 +98,7 @@
                             <span class="player_status green">is playing Overwatch.</span>
                         </div>
                     </div>
-                    <span class="icon_favorite"></span>
+                    <span class="icon_favorite" v-on:click="toggleFavorite(friend)"></span>
                     <span class="icon_delete_friend" v-on:click="deleteFriend(friend.username)"></span>
                 </div>
             </div>
@@ -115,7 +115,7 @@
 
                     </div>
                 </div>
-                <span class="icon_nofavorite"></span>
+                <span class="icon_nofavorite" v-on:click="toggleFavorite(friend)"></span>
                 <span class="icon_delete_friend" v-on:click="enableDeleteModal(friend)"></span>             
             </div>
             <!-- Friend deletion modal -->

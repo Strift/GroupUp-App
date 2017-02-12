@@ -96,6 +96,20 @@ var app = {
 
                     this.showModalDelete = false;
                 },
+
+                toggleFavorite: function(friend) {
+                    var favorite = friend.favorite ? 0 : 1;
+                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends' 
+                      + '?api_token=' + localStorage.getItem("userToken")
+                      + '&username=' + friend.username
+                      + '&favorite=' + favorite;
+                    this.$http.put(url).then(function(response) {
+                        this.getMyfriends();
+                    }, function (response) {
+                        // failure
+                        console.log("failed to favorite " + friend.username);
+                    })
+                },
                 
                 showMenu:function(){
                     this.menu = true;
