@@ -16,27 +16,57 @@
 }
 
 .modal-container {
-  width: 300px;
+  width: 70%;
   margin: 0px auto;
   padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
+  background-color: #272727;
+  border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .modal-body {
-  margin: 20px 0;
+  color: #FBFCFF;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .modal-default-button {
-  float: right;
+  margin: 0 auto;
+}
+
+.modal-footer{
+  display: inline-flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.button_nodelete{
+  width: 100px;
+  height: 3em;
+  border: 1px solid #5A5C61;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0);
+}
+
+.button_delete{
+  width: 100px;
+  height: 3em;
+  border: 1px solid #00E68A;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0);
+  margin-left: 10%;
+  align-items: flex-end;
 }
 
 /*
