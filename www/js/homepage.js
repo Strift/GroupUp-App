@@ -66,7 +66,7 @@ var app = {
                 userToDelete: null,
                 addError: null, //error mesage for adding friend
                 selectedGame:null,
-                selectedDuration:null,
+                selectedDuration:{},
 
             },
 
@@ -179,6 +179,21 @@ var app = {
                     this.$http.get(url).then(function (response) {
                         // Success
                         this.friendList = response.body.data;
+                        var actualDate = moment().format('MMMM Do YYYY, h:mm:ss');
+                        var compareDate = actualDate;
+
+                        for (var i = this.friendList.length - 1; i >= 0; i--) {
+                            compareDate = moment().add(this.friendList[i].status.duration, 'm');
+                            console.log(compareDate);
+                            if(compareDate.isAfter(this.friendList[i].status.start_date))
+                            {
+                                this.friendList[i].statusMessage = 'plays ' + this.friendList[i].status.activity;
+                            }
+                            else{
+                                this.friendList[i].statusMessage = "stopped playing " + this.friendList[i].status.activity + '.' ;
+                            }
+                            compareDate = actualDate;
+                        };
                     }, function (response) {
                         // Failure
                         console.log("failed get my friends");
