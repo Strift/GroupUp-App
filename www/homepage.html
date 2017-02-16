@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="css/form.css" />
     <link rel="stylesheet" type="text/css" href="css/menu.css" />
     <link rel="stylesheet" type="text/css" href="css/modal.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylsheet" type="text/css" href="css/iplaynow.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
     <!-- Vue Modal Component -->
     <script type="text/x-template" id="modal-template">
@@ -126,15 +127,39 @@
                 <button class="white uppercase button_delete" slot="footer" @click="disableDeleteModal(true)">I confirm</button>
             </modal>
             <!-- I play now -->
-            <div class="button_playnow">
+            <div class="button_playnow" v-on:click="enableIPNModal">
                 <div class="icon_playnow"></div>
             </div>
 
             <modal v-if="showModalIPN">
                 <h3 slot="header">I Play Now</h3>
-                <div class="white" slot="body">Do you want to delete {{ userToDelete.username }}?</div>
-                <button class="lightgray uppercase button_nodelete" slot="footer" @click="">No</button>
-                <button class="white uppercase button_delete" slot="footer" @click="">Let's rock</button>
+                <div class="white modalIPN" slot="body">
+                    <div class="ipn_gameselector_block">
+                        <span class="ipn_gameselector_text">Select your game :</span>
+                        <span class="ipn_gameselector_elm">
+                            <select class="green" v-model="selectedGame">
+                                <option v-for="game in games">{{ game.name }}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <br/>
+                    <div class="ipn_timeselector_block">
+                        <span class="ipn_timeselector_text">Time :</span>
+                        <select class="green" v-model="selectedDuration">
+                            <option v-bind:value="{ duration: 30 }">30 min</option>
+                            <option v-bind:value="{ duration: 60 }">1h</option>
+                            <option v-bind:value="{ duration: 90 }">1h30</option>
+                            <option v-bind:value="{ duration: 120 }">2h</option>
+                            <option v-bind:value="{ duration: 150 }">2h30</option>
+                            <option v-bind:value="{ duration: 180 }">3h</option>
+                            <option v-bind:value="{ duration: 210 }">3h30</option>
+                            <option v-bind:value="{ duration: 240 }">4h</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="lightgray uppercase button_nodelete" slot="footer" @click="disableIPNModal(false)">No</button>
+                <button class="white uppercase button_delete" slot="footer" @click="disableIPNModal(true)">Let's rock</button>
             </modal>
         </div>    
     </div> 
