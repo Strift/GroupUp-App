@@ -60,14 +60,19 @@ var app = {
                 menu : false,
                 addUsername: null,
                 friendList: {},
+                games: {},
                 showModalDelete: false,
+                showModalIPN:false,
                 userToDelete: null,
                 addError: null, //error mesage for adding friend
+                selectedGame:null,
+                selectedDuration:null,
 
             },
 
             mounted:function(){
-                this.getMyfriends() //method1 will execute at pageload
+                this.getMyfriends(); //method1 will execute at pageload
+                this.getGames();
             },
 
             // Methods
@@ -79,15 +84,49 @@ var app = {
                   this.$http.delete(url).then(function(response){
                         this.getMyfriends();
                        //console.log("User "+localStorage.getItem("userId")+" a supprimé l'ami " + username);
-                  }, function(response){
+                  }, function (response){
                        console.log("Error : delete friend");
                   });
+                },
+
+                getGames:function(){
+                    var url='https://laurentcazanove.com/api/games'
+                        + '?api_token=' + localStorage.getItem("userToken");
+                    this.$http.get(url).then(function(response){
+                        this.games = response.body.data;
+                    }, function (response){
+                        //ERROR
+                        this.addError = "Error : can't load games";
+                    });
+                },
+
+                enableIPNModal:function(){
+                    this.showModalIPN = true;
+                },
+
+                disableIPNModal:function(confirmed){
+                    if(confirmed){
+                        this.setSession(this.selectedGame, this.selectedDuration.duration);
+                    }
+                    this.showModalIPN = false;
+                },
+
+                setSession:function(game, durationInMinutes){
+                    var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/sessions' 
+                      + '?api_token=' + localStorage.getItem("userToken") 
+                      + '&game=' + game 
+                      + '&duration=' + durationInMinutes;
+                    this.$http.post(url).then(function (response){
+                    },function (response){
+                        //ERROR
+                    });
                 },
 
                 enableDeleteModal: function(user){
                     this.userToDelete = user;
                     this.showModalDelete = true;
                 },
+
 
                 disableDeleteModal: function(confirmed){
                     if(confirmed){
@@ -103,7 +142,7 @@ var app = {
                       + '?api_token=' + localStorage.getItem("userToken")
                       + '&username=' + friend.username
                       + '&favorite=' + favorite;
-                    this.$http.put(url).then(function(response) {
+                    this.$http.put(url).then(function (response) {
                         this.getMyfriends();
                     }, function (response) {
                         // failure
@@ -123,7 +162,7 @@ var app = {
                     var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends' 
                         + '?username=' + this.addUsername 
                         + '&api_token=' + localStorage.getItem("userToken");
-                    this.$http.post(url).then(function(response) {
+                    this.$http.post(url).then(function (response) {
                         // Success
                         this.addError = null; //raz login error message
                         this.addUsername = null;
@@ -137,10 +176,10 @@ var app = {
                 getMyfriends: function() {
                     var url = 'https://laurentcazanove.com/api/users/' + localStorage.getItem("userId") + '/friends' 
                         + '?api_token=' + localStorage.getItem("userToken");
-                    this.$http.get(url).then(function(response) {
+                    this.$http.get(url).then(function (response) {
                         // Success
                         this.friendList = response.body.data;
-                    }, function(response) {
+                    }, function (response) {
                         // Failure
                         console.log("failed get my friends");
                     });
@@ -151,7 +190,7 @@ var app = {
                 toAbout:function(){
                     window.location = "about.html";
                 },
-                disconnet: function() {
+                disconnect: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");
                     localStorage.removeItem("userId");
