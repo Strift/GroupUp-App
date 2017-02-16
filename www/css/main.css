@@ -75,6 +75,16 @@
     width:30px;
     height:30px;
     margin-left:10%;
+    z-index: 10;
+}
+
+.refresh_icon{
+    background-image:url(../img/refresh.png);
+    background-size:contain;
+    width:30px;
+    height:30px;
+    margin-left:10%;
+    z-index: 10;
 }
 
 

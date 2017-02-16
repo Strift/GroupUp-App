@@ -1,8 +1,5 @@
-DONE- Ajout d'un ami
-- Suppression d'un ami
-- Mettre en favori
-- Consulter un profil
+DONE - Ajout d'un ami
+DONE - Suppression d'un ami
+DONE - Mettre en favori
 - Déclarer une session
-- Programmer une session
-- Ajout d'un intérêt
-- Suppression d'un intérêt
+- Enlever le "back" dans le homepage
