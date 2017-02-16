@@ -45,7 +45,7 @@
 
     <title>Homepage</title>
 </head>
-            
+      
 <body>
     <!-- Vue app -->
     <div id="vue-homepage" class="app">
@@ -74,6 +74,7 @@
                     <div class="button lightgray">Overview</div>
                 </div>
             </div>
+
             <!-- Add friend block -->
             <div class="add_friend_block lightgray">
                 <form>
@@ -85,7 +86,9 @@
                     </div>
                 </form>
                 <div v-on:click="addFriendFromUsername()" class="add_friend_icon"></div>
+                <div v-on:click="getMyfriends()" class="refresh_icon"></div>
             </div>
+            
             <!-- Favorites -->
             <div class="favorite_block">
                 <span class="favorite_block_title lightgray">Favorites</span>
@@ -102,6 +105,7 @@
                     <span class="icon_delete_friend" v-on:click="deleteFriend(friend.username)"></span>
                 </div>
             </div>
+
             <!-- Friends -->
             <span class="favorite_block_title lightgray">Friends</span>
             <div v-for="friend in friendList" v-if="!friend.favorite" class="player_block">
@@ -118,6 +122,7 @@
                 <span class="icon_nofavorite" v-on:click="toggleFavorite(friend)"></span>
                 <span class="icon_delete_friend" v-on:click="enableDeleteModal(friend)"></span>             
             </div>
+        
             <!-- Friend deletion modal -->
             <modal v-if="showModalDelete">
                 <h3 slot="header">Confirm delete</h3>
@@ -137,6 +142,7 @@
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/vue-resource.min.js"></script>
     <script type="text/javascript" src="js/homepage.js"></script>
+    
 </body>
 
 </html>
