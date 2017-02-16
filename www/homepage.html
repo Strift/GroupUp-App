@@ -25,7 +25,7 @@
             <div class="modal-mask">
                 <div class="modal-wrapper">
                     <div class="modal-container">
-                        <div class="modal-header">
+                        <div class="modal-header green">
                             <slot name="header">
                             </slot>
                         </div>
@@ -121,9 +121,9 @@
             <!-- Friend deletion modal -->
             <modal v-if="showModalDelete">
                 <h3 slot="header">Confirm delete</h3>
-                <div class="darkgray" slot="body">Do you want to delete {{ userToDelete.username }}?</div>
-                <button slot="footer" @click="disableDeleteModal(false)">No</button>
-                <button slot="footer" @click="disableDeleteModal(true)">I confirm</button>
+                <div class="white" slot="body">Do you want to delete {{ userToDelete.username }}?</div>
+                <button class="lightgray uppercase button_nodelete" slot="footer" @click="disableDeleteModal(false)">No</button>
+                <button class="white uppercase button_delete" slot="footer" @click="disableDeleteModal(true)">I confirm</button>
             </modal>
             <!-- I play now -->
             <div class="button_playnow">
