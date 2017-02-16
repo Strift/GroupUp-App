@@ -59,7 +59,7 @@
                         <li class="menu-item">Homepage</li>
                         <li v-on:click="toAccount" class="menu-item">Account</li>
                         <li v-on:click="toAbout" class="menu-item">About</li>
-                        <li class="menu-item lightgray" v-on:click="disconnet">Disconnect</li>
+                        <li class="menu-item lightgray" v-on:click="disconnect">Disconnect</li>
                     </ul>
                 </div>
            </div>
@@ -129,6 +129,13 @@
             <div class="button_playnow">
                 <div class="icon_playnow"></div>
             </div>
+
+            <modal v-if="showModalIPN">
+                <h3 slot="header">I Play Now</h3>
+                <div class="white" slot="body">Do you want to delete {{ userToDelete.username }}?</div>
+                <button class="lightgray uppercase button_nodelete" slot="footer" @click="">No</button>
+                <button class="white uppercase button_delete" slot="footer" @click="">Let's rock</button>
+            </modal>
         </div>    
     </div> 
 

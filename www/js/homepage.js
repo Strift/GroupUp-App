@@ -151,7 +151,7 @@ var app = {
                 toAbout:function(){
                     window.location = "about.html";
                 },
-                disconnet: function() {
+                disconnect: function() {
                     localStorage.removeItem("usernameAutoLogin");
                     localStorage.removeItem("passwordAutoLogin");
                     localStorage.removeItem("userId");
