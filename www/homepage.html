@@ -97,7 +97,7 @@
                     <div class="player_photo"></div>
                     <div class="player_informations">
                         <span class="player_name white">{{ friend.username }}</span>
-                        <div v-if="friend.status == null" class="player_status_block">
+                        <div v-if="friend.status === null" class="player_status_block">
                             <span class="player_status_icon_noschedule"></span>
                             <span class="player_status lightgray">No session defined.</span>
                         </div>
@@ -117,7 +117,7 @@
                 <div class="player_photo"></div>
                 <div class="player_informations">
                     <span class="player_name white">{{ friend.username }}</span>
-                    <div v-if="friend.status == null" class="player_status_block">
+                    <div v-if="friend.status === null" class="player_status_block">
                         <span class="player_status_icon_noschedule"></span>
                         <span class="player_status lightgray">No session defined.</span>
                     </div>

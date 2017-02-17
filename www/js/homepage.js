@@ -179,20 +179,23 @@ var app = {
                     this.$http.get(url).then(function (response) {
                         // Success
                         this.friendList = response.body.data;
-                        var actualDate = moment().format('MMMM Do YYYY, h:mm:ss');
-                        var compareDate = actualDate;
+                        var actualDate = moment();
 
                         for (var i = this.friendList.length - 1; i >= 0; i--) {
-                            compareDate = moment().add(this.friendList[i].status.duration, 'm');
-                            console.log(compareDate);
-                            if(compareDate.isAfter(this.friendList[i].status.start_date))
+                            if(this.friendList[i].status != null)
                             {
-                                this.friendList[i].statusMessage = 'plays ' + this.friendList[i].status.activity;
+                                endDate = moment(this.friendList[i].status.start_date,'MMMM Do YYYY, h:mm:ss').add(this.friendList[i].status.duration, 'm');
+
+                                console.log(endDate);
+                                if(actualDate.isBefore(moment(endDate,'MMMM Do YYYY, h:mm:ss')))
+                                {
+                                    var diff = endDate - actualDate;
+                                    this.friendList[i].statusMessage = 'plays ' + this.friendList[i].status.activity +'.';
+                                }
+                                else{
+                                    this.friendList[i].statusMessage = "stopped playing " + this.friendList[i].status.activity + '.';
+                                }
                             }
-                            else{
-                                this.friendList[i].statusMessage = "stopped playing " + this.friendList[i].status.activity + '.' ;
-                            }
-                            compareDate = actualDate;
                         };
                     }, function (response) {
                         // Failure
